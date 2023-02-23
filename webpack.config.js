@@ -62,7 +62,7 @@ module.exports = {
         ],
     },
     resolve: {
-        extensions: ['.ts', '.tsx', '.json', '.css', '.scss', '.sass'],
+        extensions: ['.ts', '.tsx', '.js', 'jsx', '.json', '.css', '.scss', '.sass'],
     },
     devServer: {
         static: {
