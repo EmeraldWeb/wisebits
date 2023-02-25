@@ -1,41 +1,29 @@
 import React, { ReactElement } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
-import { increment, decrement } from '../data/store/states/count/actions';
-import { getCount } from '../data/store/states/count/selectors';
+import { useSelector } from 'react-redux';
 
-import styles from './App.scss';
+import { getLogs } from '../data/store/states/logs/selectors';
+import { defaultLifeAmount } from '../data/store/states/game/const';
 
-type Props = {
-    children: ReactElement | string,
-}
+import { Layout } from '../components/Layout';
+import { Game } from '../components/Game';
 
-export function App({ children }: Props): ReactElement {
-    const dispatch = useDispatch();
-    const count = useSelector(getCount);
+export function App(): ReactElement {
+    const logs = useSelector(getLogs);
+    let logMessage = `Welcome! Game rules: press the arrow buttons → ↑ ← ↓ 
+    when the corresponding arrow is displayed on the screen, you have only ${defaultLifeAmount} tries.`;
 
-    const handleIncrement = () => {
-        dispatch(increment());
-    };
+    if (logs[0]) {
+        const lastLog = logs[logs.length - 1];
+        const date = new Date(lastLog.timestamp);
 
-    const handleDecrement = () => {
-        dispatch(decrement());
-    };
+        logMessage = `(${date.getHours()}:${date.getMinutes()}) ${lastLog.text}`;
+    }
 
     return (
-        <main className={styles.background}>
-            <div>
-                <button onClick={() => {
-                    handleIncrement();
-                }}>+ smthg</button>
-                <button onClick={() => {
-                    handleDecrement();
-                }}>- smthg</button>
-                <div>
-                    {count}
-                </div>
-            </div>
-
-            {children}
-        </main>
+        <Layout
+            header={logMessage}
+        >
+            <Game />
+        </Layout>
     );
 }

@@ -1,6 +1,8 @@
 import { combineReducers } from '@reduxjs/toolkit';
-import { count } from './count/reducers';
+import { game } from './game/reducers';
+import { logs } from './logs/reducers';
 
 export const rootReducer = combineReducers({
-    count,
+    game,
+    logs,
 });

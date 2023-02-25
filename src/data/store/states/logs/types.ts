@@ -1,8 +1,11 @@
 import { InferValueTypes } from '../../../../utils/inferTypes';
 import * as actions from './actions';
 
-export type Count = number;
 export type Actions = ReturnType<InferValueTypes<typeof actions>>;
+export type Log = { // for future: add key/type of log
+    id: string | number,
+    timestamp: number,
+    text: string,
+};
 
-export const COUNT_INCREMENT = 'COUNT_INCREMENT';
-export const COUNT_DECREMENT = 'COUNT_DECREMENT';
+export const LOG_NEW = 'LOG_NEW';

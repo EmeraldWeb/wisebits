@@ -13,9 +13,7 @@ if (root) {
     createRoot(root).render(
         <React.StrictMode>
             <Provider store={store}>
-                <App>
-                    Hello
-                </App>
+                <App />
             </Provider>
         </React.StrictMode>
     );
