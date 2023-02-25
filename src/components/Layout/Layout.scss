@@ -1,16 +1,20 @@
-$header-height: 64px;
+$header-height: 56px;
 
 .layout {
+    margin: 0 auto;
     display: flex;
     flex-direction: column;
     box-sizing: border-box;
     min-height: 100vh;
+    max-width: 1024px;
+    width: 100%;
     padding: 16px;
 }
 
 .header {
     overflow-y: auto;
     min-height: $header-height;
+    line-height: 40px;
     font-size: 24px;
     font-weight: 700;
 }

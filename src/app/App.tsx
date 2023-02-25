@@ -16,7 +16,7 @@ export function App(): ReactElement {
         const lastLog = logs[logs.length - 1];
         const date = new Date(lastLog.timestamp);
 
-        logMessage = `(${date.getHours()}:${date.getMinutes()}) ${lastLog.text}`;
+        logMessage = `(${date.getHours()}:${date.getMinutes()}:${date.getSeconds()}) ${lastLog.text}`;
     }
 
     return (

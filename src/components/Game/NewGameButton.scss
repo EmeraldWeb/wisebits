@@ -1,4 +1,14 @@
 .button {
-    font-size: 20px;
-    background-color: #F6C6CE;
+    font-size: 40px;
+    background-color: #69be09;
+    border: 2px solid green;
+    border-radius: 5px;
+    min-height: 68px;
+    cursor: pointer;
+    transition: opacity;
+
+    &:hover,
+    &:focus {
+        opacity: 0.7;
+    }
 }

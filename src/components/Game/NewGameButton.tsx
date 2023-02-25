@@ -8,7 +8,7 @@ type Props = {
 }
 
 export function NewGameButton({
-    children = 'New Game?',
+    children = 'New Game',
     onClick,
     className,
 }: Props) {
