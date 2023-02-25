@@ -8,6 +8,7 @@ import { useInputsListener } from '../../hooks/useInputsListener';
 
 import { LifeCounter } from './LifeCounter';
 import { NewGameButton } from './NewGameButton';
+import { Arrow } from './Arrow';
 
 import { GameInput } from '../../data/store/states/game/types';
 import styles from './Game.scss';
@@ -29,9 +30,9 @@ export function Game(): ReactElement {
 
     function Content() {
         if (isPlay) {
-            return lastKey ?
-                <div className={styles.showKey}>{lastKey}</div> :
-                <div className={styles.waiting}>Waiting...</div>;
+            return lastKey
+                ? <Arrow className={styles.showKey} type={lastKey} />
+                : <div className={styles.waiting}>Waiting...</div>;
         } else {
             const onClick = () => {
                 dispatch(gameStart());
@@ -45,11 +46,11 @@ export function Game(): ReactElement {
         if (isPlay) {
             return (
                 <div className={styles.menu}>
-                    <LifeCounter amount={lifeCount} />
-
                     <div className={styles.timer}>
                         Seconds left: {new Date(lastTime).getSeconds()}
                     </div>
+
+                    <LifeCounter amount={lifeCount} />
                 </div>
             );
         }
