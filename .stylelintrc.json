@@ -3,6 +3,7 @@
     "plugins": ["stylelint-scss"],
     "rules": {
         "indentation": [4],
-        "string-quotes": ["single", { "avoidEscape" : true }]
+        "string-quotes": ["single", { "avoidEscape" : true }],
+        "selector-pseudo-class-no-unknown": null
     }
 }
