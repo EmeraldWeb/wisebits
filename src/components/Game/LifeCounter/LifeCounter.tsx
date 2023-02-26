@@ -1,4 +1,6 @@
+import { ReactElement } from 'react';
 import { v4 as uuidv4 } from 'uuid';
+
 import styles from './LifeCounter.scss';
 
 type Props = {
@@ -6,7 +8,7 @@ type Props = {
     icon?: string,
 }
 
-export function LifeCounter({ amount = 0, icon }: Props) {
+export function LifeCounter({ amount = 0, icon }: Props): ReactElement {
     function listItems() {
         const symbol = icon ?? '❤️';
 
@@ -15,7 +17,12 @@ export function LifeCounter({ amount = 0, icon }: Props) {
                 key={`${index}-${uuidv4()}`}
                 className={styles.item}
             >
-                {symbol}
+                <span
+                    role="img"
+                    aria-label="Life symbol"
+                >
+                    {symbol}
+                </span>
             </li>
         ));
     }

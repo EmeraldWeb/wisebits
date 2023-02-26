@@ -9,20 +9,23 @@ export function* watchUserInput() {
     yield takeEvery(GAME_PUSH_USER_KEY, workUserKey);
 }
 
+export const logTextRight = `👍 GREAT! 👍 Keep going!`;
+export const logTextWrong = `💥 WRONG! 💥️ You lose life!`;
+
 function* workUserKey() {
     const lastTaskKey: string = yield select(getLastTaskKey);
     const lastUserKey: string = yield select(getLastUserKey);
 
     if (lastUserKey === lastTaskKey) {
         yield put(plusProgress());
-        yield put(pushLog(`👍 GREAT! 👍 Keep going!`));
+        yield put(pushLog(logTextRight));
     } else {
         yield put(minusLife());
 
         const lifeCount: number = yield select(getLifeCount);
         if (lifeCount > 0) {
             yield put(pushNewTaskKey());
-            yield put(pushLog(`💥 WRONG! 💥️ You lose life!`));
+            yield put(pushLog(logTextWrong));
         }
     }
 }

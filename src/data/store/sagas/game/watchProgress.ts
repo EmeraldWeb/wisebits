@@ -10,13 +10,15 @@ export function* watchProgress() {
     yield takeEvery(GAME_PROGRESS_SET, workCheckProgress);
 }
 
+export const logText = `✨ You WIN! ✨ Another try?`;
+
 function* workCheckProgress() {
     const progress: number = yield select(getProgress);
     const winThreshold: number = yield select(getWinThreshold);
 
     if (progress >= winThreshold) {
         yield put(gameEnd());
-        yield put(pushLog(`✨ You WIN! ✨ Another try?`));
+        yield put(pushLog(logText));
     } else {
         yield put(pushNewTaskKey());
     }

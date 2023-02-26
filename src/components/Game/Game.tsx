@@ -2,13 +2,14 @@ import React, { ReactElement } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 
 import { gameStart, pushNewUserKey } from '../../data/store/states/game/actions';
-import { getIsGamePlay, getLastTaskKey, getLastTime, getLifeCount } from '../../data/store/states/game/selectors';
+import { getIsGamePlay, getLastTaskKey, getLifeCount } from '../../data/store/states/game/selectors';
 import { inputsCodes } from '../../data/store/states/game/const';
 import { useInputsListener } from '../../hooks/useInputsListener';
 
 import { LifeCounter } from './LifeCounter';
 import { NewGameButton } from './NewGameButton';
 import { Arrow } from './Arrow';
+import { AnswerTimer } from './AnswerTimer';
 
 import { GameInput } from '../../data/store/states/game/types';
 import styles from './Game.scss';
@@ -17,7 +18,6 @@ export function Game(): ReactElement {
     const isPlay = useSelector(getIsGamePlay);
     const lifeCount = useSelector(getLifeCount);
     const lastKey = useSelector(getLastTaskKey);
-    const lastTime = useSelector(getLastTime);
     const dispatch = useDispatch();
 
     useInputsListener({
@@ -46,9 +46,7 @@ export function Game(): ReactElement {
         if (isPlay) {
             return (
                 <div className={styles.menu}>
-                    <div className={styles.timer}>
-                        Seconds left: {new Date(lastTime).getSeconds()}
-                    </div>
+                    <AnswerTimer className={styles.timer} />
 
                     <LifeCounter amount={lifeCount} />
                 </div>
