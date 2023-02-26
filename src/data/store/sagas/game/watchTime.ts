@@ -11,6 +11,8 @@ export function* watchTime() {
 
 let timer: null | ReturnType<typeof setTimeout> = null;
 
+export const logText = `⏱️ TIMEOUT! ⏱️ You lose life!`;
+
 function* workTimeout() {
     const isPlay: boolean = yield select(getIsGamePlay);
 
@@ -37,7 +39,7 @@ function* workTimeout() {
             const lifeCount: number = yield select(getLifeCount);
             if (lifeCount > 0) {
                 yield put(pushNewTaskKey());
-                yield put(pushLog(`⏱️ TIMEOUT! ⏱️ You lose life!`));
+                yield put(pushLog(logText));
             }
         } else {
             yield put(updateTime(delta));

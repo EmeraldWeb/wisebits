@@ -10,10 +10,12 @@ export function* watchLife() {
     yield takeEvery(GAME_LIFE_SET, workUserKey);
 }
 
+export const logText = `💧 You LOSE! 💧 Another try?`;
+
 function* workUserKey() {
     const life: number = yield select(getLifeCount);
     if (life <= 0) {
         yield put(gameEnd());
-        yield put(pushLog(`💧 You LOSE! 💧 Another try? `));
+        yield put(pushLog(logText));
     }
 }

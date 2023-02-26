@@ -8,7 +8,9 @@ export function* watchStart() {
     yield takeEvery(GAME_START, workGameIsStart);
 }
 
+export const logText = `The game has begun! 🍀 Good luck! 🍀`;
+
 function* workGameIsStart() {
-    yield put(pushLog(`The game has begun! 🍀 Good luck! 🍀`));
+    yield put(pushLog(logText));
     yield put(pushNewTaskKey());
 }

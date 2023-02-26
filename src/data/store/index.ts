@@ -1,8 +1,6 @@
 import { configureStore } from '@reduxjs/toolkit';
 import createSagaMiddleware from 'redux-saga';
 
-import { errorsHandling } from './middlewares/errorsHandling';
-
 import { rootReducer } from './states';
 import { rootSaga } from './sagas';
 
@@ -13,7 +11,6 @@ const store = configureStore({
     middleware: (getDefaultMiddleware) => [
         ...getDefaultMiddleware(),
         sagaMiddleware,
-        errorsHandling,
     ],
     devTools: true,
 });

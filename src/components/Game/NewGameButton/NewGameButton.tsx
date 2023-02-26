@@ -11,7 +11,7 @@ export function NewGameButton({
     children = 'New Game',
     onClick,
     className,
-}: Props) {
+}: Props): ReactElement {
     const handleClick = (event: MouseEvent | TouchEvent) => {
         onClick(event);
     };

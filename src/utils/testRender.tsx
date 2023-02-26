@@ -12,7 +12,6 @@ import type { AppStore, RootState } from '../data/store';
 // As a basic setup, import your same slice reducers
 import { rootReducer } from '../data/store/states';
 import { rootSaga } from '../data/store/sagas';
-import { errorsHandling } from '../data/store/middlewares/errorsHandling';
 
 // This type interface extends the default options for render from RTL, as well
 // as allows the user to specify other things such as initialState, store.
@@ -34,7 +33,6 @@ export function renderWithProviders(
             middleware: (getDefaultMiddleware) => [
                 ...getDefaultMiddleware(),
                 sagaMiddleware,
-                errorsHandling,
             ],
         }),
         ...renderOptions

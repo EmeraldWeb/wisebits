@@ -8,8 +8,12 @@ export function* watchEnd() {
     yield takeEvery(GAME_END, workGameIsEnd);
 }
 
+export const logText = (progress: string | number) =>
+    `Your progress: ${progress}. Thanks for playing!`;
+
 function* workGameIsEnd() {
     const progress: number = yield select(getProgress);
 
-    yield put(pushLog(`Your progress: ${progress}. Thanks for playing!`));
+    yield put(pushLog(logText(progress)));
 }
+
